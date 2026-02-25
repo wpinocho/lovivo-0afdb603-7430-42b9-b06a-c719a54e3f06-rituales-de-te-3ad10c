@@ -6,18 +6,15 @@ import { FloatingCart } from '@/components/FloatingCart'
 import { ProfileMenu } from '@/components/ProfileMenu'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
-import { ShoppingCart } from 'lucide-react'
+import { ShoppingCart, Menu } from 'lucide-react'
 import { useCartUISafe } from '@/components/CartProvider'
 import { useCart } from '@/contexts/CartContext'
 import { useCollections } from '@/hooks/useCollections'
-import { Input } from '@/components/ui/input'
 import { ScrollLink } from '@/components/ScrollLink'
 
 /**
  * EDITABLE TEMPLATE - EcommerceTemplate
- * 
- * Template específico para páginas de ecommerce con header, footer y cart.
- * El agente IA puede modificar completamente el diseño, colores, layout.
+ * Ritual Botánico — Luxury Mexican Bath Tea
  */
 
 interface EcommerceTemplateProps {
@@ -48,121 +45,145 @@ export const EcommerceTemplate = ({
   const { hasCollections, loading: loadingCollections } = useCollections()
 
   const header = (
-    <div className={`py-2 ${headerClassName}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <BrandLogoLeft />
+    <div className={headerClassName}>
+      {/* Announcement Bar */}
+      <div className="bg-primary text-primary-foreground py-2 px-4 text-center">
+        <p className="font-lato text-xs tracking-[0.12em] uppercase">
+          ✦ Envío gratis en pedidos mayores a $899 MXN ✦ 100% Botánica Mexicana ✦
+        </p>
+      </div>
 
-          {/* Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <nav className="flex space-x-6">
+      {/* Main Header */}
+      <div className="bg-background border-b border-border py-4">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="flex items-center justify-between">
+
+            {/* Left Nav */}
+            <nav className="hidden md:flex items-center gap-8 w-1/3">
+              <ScrollLink
+                to="/#products"
+                className="font-lato text-xs tracking-[0.12em] uppercase text-foreground/60 hover:text-primary transition-colors"
+              >
+                Rituales
+              </ScrollLink>
               {!loadingCollections && hasCollections && (
-                <ScrollLink 
-                  to="/#collections" 
-                  className="text-foreground/70 hover:text-foreground transition-colors"
+                <ScrollLink
+                  to="/#collections"
+                  className="font-lato text-xs tracking-[0.12em] uppercase text-foreground/60 hover:text-primary transition-colors"
                 >
                   Colecciones
                 </ScrollLink>
               )}
-              <ScrollLink 
-                to="/#products" 
-                className="text-foreground/70 hover:text-foreground transition-colors"
+              <ScrollLink
+                to="/#how-to"
+                className="font-lato text-xs tracking-[0.12em] uppercase text-foreground/60 hover:text-primary transition-colors"
               >
-                Productos
+                ¿Cómo Funciona?
               </ScrollLink>
-              <Link 
-                to="/blog" 
-                className="text-foreground/70 hover:text-foreground transition-colors"
+              <Link
+                to="/blog"
+                className="font-lato text-xs tracking-[0.12em] uppercase text-foreground/60 hover:text-primary transition-colors"
               >
                 Blog
               </Link>
             </nav>
-          </div>
 
-          {/* Profile & Cart */}
-          <div className="flex items-center space-x-2">
-            <ProfileMenu />
-            
-            {showCart && (
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={openCart}
-                className="relative"
-                aria-label="Ver carrito"
-              >
-                <ShoppingCart className="h-5 w-5" />
-                {totalItems > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-primary text-primary-foreground text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
-                    {totalItems > 99 ? '99+' : totalItems}
-                  </span>
-                )}
+            {/* Center Logo */}
+            <div className="flex justify-center md:justify-center w-full md:w-1/3">
+              <BrandLogoLeft />
+            </div>
+
+            {/* Right Icons */}
+            <div className="flex items-center gap-1 justify-end w-auto md:w-1/3">
+              <ProfileMenu />
+
+              {showCart && (
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={openCart}
+                  className="relative text-foreground hover:text-primary"
+                  aria-label="Ver carrito"
+                >
+                  <ShoppingCart className="h-5 w-5" />
+                  {totalItems > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-[10px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
+                      {totalItems > 99 ? '99+' : totalItems}
+                    </span>
+                  )}
+                </Button>
+              )}
+
+              {/* Mobile menu hint */}
+              <Button variant="ghost" size="icon" className="md:hidden text-foreground">
+                <Menu className="h-5 w-5" />
               </Button>
-            )}
+            </div>
           </div>
-        </div>
 
-        {/* Page Title */}
-        {pageTitle && (
-          <div className="mt-6">
-            <h1 className="text-3xl font-bold text-foreground">
-              {pageTitle}
-            </h1>
-          </div>
-        )}
+          {/* Page Title */}
+          {pageTitle && (
+            <div className="mt-6 text-center">
+              <h1 className="font-playfair text-3xl text-foreground">{pageTitle}</h1>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )
 
   const footer = (
-    <div className={`bg-black text-white py-12 ${footerClassName}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className={`bg-foreground text-primary-foreground py-16 ${footerClassName ?? ''}`}>
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+
           {/* Brand */}
-          <div>
-            <BrandLogoLeft />
-            <p className="mt-4 text-white/70">
-              Tu tienda online de confianza
+          <div className="md:col-span-2">
+            <div className="flex flex-col mb-4">
+              <span className="font-playfair text-2xl text-primary-foreground leading-none">Ritual</span>
+              <span className="text-[9px] font-lato font-bold tracking-[0.35em] text-primary-foreground/50 uppercase mt-0.5">Botánico</span>
+            </div>
+            <p className="font-lato text-sm text-primary-foreground/60 leading-relaxed max-w-xs">
+              Rituales de Té de Baño elaborados con botánica mexicana premium para transformar tu bienestar diario.
             </p>
           </div>
 
           {/* Links */}
           <div>
-            <h3 className="font-semibold mb-4 text-white">Enlaces</h3>
-            <div className="space-y-2">
-              <Link 
-                to="/" 
-                className="block text-white/70 hover:text-white transition-colors"
-              >
-                Inicio
-              </Link>
-              <Link 
-                to="/blog" 
-                className="block text-white/70 hover:text-white transition-colors"
-              >
-                Blog
-              </Link>
+            <h3 className="font-lato text-xs tracking-[0.2em] uppercase text-primary-foreground/40 mb-5">Explorar</h3>
+            <div className="space-y-3">
+              <Link to="/" className="block font-lato text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">Inicio</Link>
+              <ScrollLink to="/#products" className="block font-lato text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">Rituales</ScrollLink>
+              <Link to="/blog" className="block font-lato text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors">Blog</Link>
             </div>
           </div>
 
-          {/* Social Links */}
+          {/* Social */}
           <div>
-            <h3 className="font-semibold mb-4 text-white">Síguenos</h3>
+            <h3 className="font-lato text-xs tracking-[0.2em] uppercase text-primary-foreground/40 mb-5">Síguenos</h3>
             <SocialLinks />
+            <p className="font-lato text-xs text-primary-foreground/40 mt-6 leading-relaxed">
+              Etiquétanos en tu ritual de baño con <br />
+              <span className="text-primary-foreground/60">#RitualBotanico</span>
+            </p>
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-white/20 text-center text-white/70">
-          <p>&copy; 2025 Tu Tienda. Todos los derechos reservados.</p>
+        <div className="border-t border-primary-foreground/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="font-lato text-xs text-primary-foreground/40">
+            &copy; 2025 Ritual Botánico. Todos los derechos reservados.
+          </p>
+          <p className="font-lato text-xs text-primary-foreground/30 italic">
+            Hecho con ♥ en México
+          </p>
         </div>
       </div>
-    </div>
+    </footer>
   )
 
   return (
     <>
-      <PageTemplate 
+      <PageTemplate
         header={header}
         footer={footer}
         className={className}
@@ -170,7 +191,7 @@ export const EcommerceTemplate = ({
       >
         {children}
       </PageTemplate>
-      
+
       {showCart && <FloatingCart hideOnMobile={hideFloatingCartOnMobile} />}
     </>
   )

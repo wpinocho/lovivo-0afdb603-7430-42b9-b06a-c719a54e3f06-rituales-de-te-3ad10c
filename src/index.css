@@ -6,96 +6,142 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ============================================
+   RITUAL BOTÁNICO — Design System
+   Inspired by luxury Mexican botanical wellness
+   Palette: Warm Cream + Forest Green + Gold
+   Fonts: Playfair Display (headings) + Lato (body)
+   ============================================ */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Palette */
+    --background: 42 35% 96%;       /* Warm cream — like Inoki's background */
+    --foreground: 28 30% 12%;       /* Deep warm charcoal */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 42 30% 98%;             /* Slightly lighter cream for cards */
+    --card-foreground: 28 30% 12%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 42 30% 98%;
+    --popover-foreground: 28 30% 12%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary = Deep Forest Green */
+    --primary: 152 42% 18%;          /* Rich forest green */
+    --primary-foreground: 42 35% 97%; /* Cream on green */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary = Warm Amber/Terracotta */
+    --secondary: 32 42% 52%;        /* Warm amber */
+    --secondary-foreground: 28 30% 12%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted = Soft cream tones */
+    --muted: 40 28% 90%;            /* Soft muted cream */
+    --muted-foreground: 28 18% 45%; /* Medium warm gray */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent = Deep Green (for hover/active states) */
+    --accent: 152 38% 25%;          /* Slightly lighter green */
+    --accent-foreground: 42 35% 97%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 42 35% 97%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 35 22% 84%;           /* Warm cream border */
+    --input: 40 25% 92%;
+    --ring: 152 42% 18%;            /* Forest green ring */
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;              /* More minimal, like luxury brands */
 
-    --sidebar-background: 0 0% 98%;
+    /* Custom tokens */
+    --gold: 43 75% 52%;             /* Gold accent */
+    --cream-light: 45 50% 98%;      /* Very light cream */
+    --green-light: 152 25% 92%;     /* Very light green tint */
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar */
+    --sidebar-background: 42 35% 96%;
+    --sidebar-foreground: 28 30% 20%;
+    --sidebar-primary: 152 42% 18%;
+    --sidebar-primary-foreground: 42 35% 97%;
+    --sidebar-accent: 40 28% 90%;
+    --sidebar-accent-foreground: 28 30% 12%;
+    --sidebar-border: 35 22% 84%;
+    --sidebar-ring: 152 42% 18%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
+    --background: 28 25% 8%;
+    --foreground: 42 30% 90%;
+    --card: 28 20% 11%;
+    --card-foreground: 42 30% 90%;
+    --popover: 28 20% 11%;
+    --popover-foreground: 42 30% 90%;
+    --primary: 152 38% 42%;
+    --primary-foreground: 28 25% 8%;
+    --secondary: 32 35% 28%;
+    --secondary-foreground: 42 30% 90%;
+    --muted: 28 18% 18%;
+    --muted-foreground: 40 18% 60%;
+    --accent: 152 32% 28%;
+    --accent-foreground: 42 30% 90%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --destructive-foreground: 42 30% 90%;
+    --border: 28 18% 20%;
+    --input: 28 18% 18%;
+    --ring: 152 38% 42%;
+    --sidebar-background: 28 25% 8%;
+    --sidebar-foreground: 42 30% 90%;
+    --sidebar-primary: 152 38% 42%;
+    --sidebar-primary-foreground: 28 25% 8%;
+    --sidebar-accent: 28 18% 18%;
+    --sidebar-accent-foreground: 42 30% 90%;
+    --sidebar-border: 28 18% 20%;
+    --sidebar-ring: 152 38% 42%;
   }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+/* Animations */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.7s ease-out forwards;
+  }
+
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(28, 40, 20, 0.12);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @layer base {
