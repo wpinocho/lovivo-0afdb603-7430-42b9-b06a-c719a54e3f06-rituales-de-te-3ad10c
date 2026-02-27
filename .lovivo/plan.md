@@ -65,11 +65,10 @@
 - src/templates/EcommerceTemplate.tsx — WhatsApp button + mobile menu
 
 ## Known Issues
-- Bundle type `fixed` fails with backend error 'NoneType object is not subscriptable' — using mix_match/mix_match_variant as workaround
-- The `fixed` bundle type issue was confirmed again in this session — NOT using it
+- ~~Bundle type `fixed` fails with backend error~~ — **FIXED ✅ (2026-02-27)**: The `fixed` bundle type now works correctly. Verified with test bundle creation.
 
 ## Next Steps
 1. [ ] Quiz "Encuentra tu Ritual" — lead quiz that suggests a product based on answers
 2. [ ] Blog content — 3-4 posts on Mexican botanical wellness
 3. [ ] Upsell "Completa tu Ritual" section on product page (related products)
-4. [ ] Consider adding a second collection for "Gift Sets" (bundles) once bundle fixed type is working
+4. [ ] Consider migrating existing bundles to `fixed` type now that it's working
