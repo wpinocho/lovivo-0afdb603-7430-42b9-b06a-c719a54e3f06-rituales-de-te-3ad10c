@@ -8,6 +8,45 @@ import type { UseIndexLogicReturn } from '@/components/headless/HeadlessIndex';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Leaf, Droplets, Music, Sparkles } from 'lucide-react';
 
+const TESTIMONIALS = [
+  {
+    name: "Valentina R.",
+    location: "CDMX",
+    product: "Jardín de Hibisco",
+    text: "El Jardín de Hibisco cambió mis domingos completamente. Antes era el día de estrés de la semana. Ahora es mi momento sagrado. Mi piel se siente increíblemente suave y mi mente se calma al instante.",
+  },
+  {
+    name: "Sofía M.",
+    location: "Guadalajara",
+    product: "Ritual Mensual",
+    text: "Llevo 3 meses con mi suscripción y mi piel nunca había estado tan bien. El Aloe & Maguey es un milagro para mi piel sensible. Llegó puntual, el packaging es bellísimo y el aroma es de otro mundo.",
+  },
+  {
+    name: "Camila P.",
+    location: "Monterrey",
+    product: "Cempasúchil Dorado",
+    text: "El Cempasúchil Dorado es el regalo perfecto. Lo compré para mi mamá y ahora ella lo pide cada mes. El aroma es cálido, especiado, totalmente mexicano. Se siente como un abrazo.",
+  },
+  {
+    name: "Andrea L.",
+    location: "CDMX",
+    product: "Selva Tropical",
+    text: "Trabajo frente a computadora todo el día y llego con los músculos contracturados. La Selva Tropical es lo único que me relaja de verdad. Duermo mucho mejor desde que la uso los miércoles.",
+  },
+  {
+    name: "Isabela T.",
+    location: "Querétaro",
+    product: "Bosque de Copal",
+    text: "Compré el Kit Descubrimiento y el Bosque de Copal se convirtió en mi favorito inmediatamente. Es como un temazcal en casa. El olor a copal me transporta a algo muy ancestral y poderoso.",
+  },
+  {
+    name: "Mariana V.",
+    location: "Puebla",
+    product: "Kit Descubrimiento",
+    text: "Recibí el Kit Descubrimiento como regalo de cumpleaños y fue lo mejor que me pudieron dar. Cada ritual es distinto y especial. Ahora tengo uno para cada estado de ánimo. ¡100% recomendado!",
+  },
+]
+
 /**
  * EDITABLE UI - IndexUI
  * Ritual Botánico — Luxury Mexican Bath Tea Homepage
@@ -175,10 +214,18 @@ export const IndexUI = ({ logic }: IndexUIProps) => {
 
       {/* ─── BUNDLES SECTION (if any) ─── */}
       {!loadingBundles && bundles.length > 0 && (
-        <section id="bundles" className="py-16 bg-muted/50">
+        <section id="bundles" className="py-20 bg-muted/40">
           <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
-            <h2 className="font-playfair text-3xl text-primary mb-10 text-center">Kits Especiales</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="text-center mb-14">
+              <p className="font-lato text-xs tracking-[0.2em] uppercase text-muted-foreground mb-3">Kits Curados</p>
+              <h2 className="font-playfair text-4xl sm:text-5xl text-primary leading-tight mb-4">
+                Ahorra Más, Rituales Completos
+              </h2>
+              <p className="font-lato text-muted-foreground max-w-xl mx-auto">
+                Combinaciones diseñadas para maximizar tus beneficios. Cada kit incluye nuestros rituales más amados a un precio especial.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {bundles.map((bundle) => (
                 <BundleCard key={bundle.id} bundle={bundle} />
               ))}
@@ -186,6 +233,48 @@ export const IndexUI = ({ logic }: IndexUIProps) => {
           </div>
         </section>
       )}
+
+      {/* ─── TESTIMONIALS SECTION ─── */}
+      <section className="py-20 bg-background">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="text-center mb-14">
+            <p className="font-lato text-xs tracking-[0.2em] uppercase text-muted-foreground mb-3">Rituales Reales</p>
+            <h2 className="font-playfair text-4xl sm:text-5xl text-primary leading-tight mb-4">
+              Lo que Dicen Nuestras Clientas
+            </h2>
+            <div className="flex items-center justify-center gap-2 mt-2">
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="text-[hsl(var(--gold))] text-lg">★</span>
+                ))}
+              </div>
+              <span className="font-lato text-muted-foreground text-sm">4.9 de 5 · +35,000 rituales recreados</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {TESTIMONIALS.map((t, i) => (
+              <div key={i} className="bg-card border border-border p-6 space-y-4 hover:border-primary/30 transition-colors">
+                <div className="flex">
+                  {[...Array(5)].map((_, j) => (
+                    <span key={j} className="text-[hsl(var(--gold))] text-sm">★</span>
+                  ))}
+                </div>
+                <p className="font-lato text-sm text-foreground/80 leading-relaxed italic">"{t.text}"</p>
+                <div className="flex items-center gap-3 pt-1">
+                  <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <span className="font-playfair text-sm text-primary font-bold">{t.name[0]}</span>
+                  </div>
+                  <div>
+                    <p className="font-lato text-sm font-semibold text-foreground">{t.name}</p>
+                    <p className="font-lato text-xs text-muted-foreground">{t.location} · {t.product}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ─── LIFESTYLE FULL-WIDTH SECTION ─── */}
       <section className="relative overflow-hidden" style={{ minHeight: '60vh' }}>
