@@ -30,10 +30,10 @@
 ## Collections
 - Rituales de Té de Baño (id: 5465d300-45fa-4efb-af5d-dddd5c4ae54c) — all 5 products
 
-## Bundles (3 active)
-- Kit Descubrimiento Botánico (id: f552d9cb-7dd9-4677-bc0a-1c9f49e9fd30) — mix_match 5 from collection — $1,199 (was $1,525)
-- Dúo de Rituales Día & Noche (id: bd95605a-1dcf-47cd-b6d2-0a941964c544) — mix_match 2 from collection — $999 (was $1,198)
-- Colección Completa Botánica (id: 1a74c3f2-2441-4398-bd44-aef973986fd1) — mix_match_variant Full Size 5 — $2,299 (was $3,045)
+## Bundles (3 active — recreated 2026-02-27)
+- Kit Descubrimiento Botánico (id: a890e5ab-041d-47ca-9011-a54376fdb676) — mix_match 5 from collection — $1,199 (was $1,525)
+- Dúo de Rituales Día & Noche (id: ec2372a0-7d31-42c4-b532-9cfeb53aa869) — mix_match 2 from collection — $999 (was $1,198)
+- Colección Completa Botánica (id: 15066be4-e273-4ef4-ab6e-05fef433b24a) — mix_match_variant Full Size (4 baños) 5 — $2,299 (was $3,045)
 
 ## Price Rules (2 active)
 - Descuento por Volumen (id: 98964db5): Buy 2 → 10%, Buy 3+ → 15% — all products
@@ -57,7 +57,7 @@
 - Improved Bundles section in IndexUI: better heading + layout (3-column grid)
 - Added WhatsApp floating button to EcommerceTemplate (bottom-right, WhatsApp green, tooltip on hover)
 - Added mobile hamburger drawer menu to EcommerceTemplate (slides in from right, forest green background)
-- Added react-intersection-observer dependency for sticky bar scroll detection
+- Recreated 3 bundles (previous ones were deleted due to backend bug)
 
 ## Files Modified
 - src/pages/ui/ProductPageUI.tsx — full redesign
@@ -66,6 +66,7 @@
 
 ## Known Issues
 - Bundle type `fixed` fails with backend error 'NoneType object is not subscriptable' — using mix_match/mix_match_variant as workaround
+- The `fixed` bundle type issue was confirmed again in this session — NOT using it
 
 ## Next Steps
 1. [ ] Quiz "Encuentra tu Ritual" — lead quiz that suggests a product based on answers
